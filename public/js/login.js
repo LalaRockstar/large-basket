@@ -18,7 +18,7 @@ const login = async (email, password) => {
     const res = await axios({
       method: "POST",
       withCredentials: true,
-      url: "http://127.0.0.1:8000/api/v1/ecom/users/login",
+      url: "/api/v1/ecom/users/login",
       data: {
         email,
         password,
@@ -48,7 +48,7 @@ const logout = async () => {
     // eslint-disable-next-line no-undef
     const res = await axios({
       method: "GET",
-      url: "http://127.0.0.1:8000/api/v1/ecom/users/login",
+      url: "/api/v1/ecom/users/logout",
     });
     // eslint-disable-next-line no-restricted-globals
     if (res.data.status === "success") {

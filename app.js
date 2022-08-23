@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 const categoryRouter = require("./routers/categoryRouter");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 const userRouter = require("./routers/userRouter");
@@ -17,17 +18,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:8000",
-    credentials: true,
-  })
-);
+app.use(compression());
+app.use(cors());
 app.use(cookieParser());
-app.use((req, res, next) => {
-  console.log(req.cookies.jwt);
-  next();
-});
 
 app.use("/", viewRouter);
 

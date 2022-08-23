@@ -96,21 +96,25 @@ exports.logout = (req, res) => {
 exports.protect = async (req, res, next) => {
   if (req.cookies.jwt) {
     // _______compare the token_________ //
-    const decoded = await jwt.verify(req.cookies.jwt, process.env.JWT_SECRET);
+    try {
+      const decoded = await jwt.verify(req.cookies.jwt, process.env.JWT_SECRET);
 
-    // _______checking if the user still exist__________ //
-    const freshUser = await User.findById(decoded.id);
-    if (!freshUser) {
-      return next(new AppError("User doesnot exist! Please log in", 404));
+      // _______checking if the user still exist__________ //
+      const freshUser = await User.findById(decoded.id);
+      if (!freshUser) {
+        return next(new AppError("User doesnot exist! Please log in", 404));
+      }
+      // ______checking if the user change the password after the token was issued____ //
+
+      if (freshUser.passwordChangeAfter(decoded.iat)) {
+        return next(new AppError("User recently changed the password", 401));
+      }
+      res.locals.user = freshUser;
+
+      return next();
+    } catch (err) {
+      return next();
     }
-    // ______checking if the user change the password after the token was issued____ //
-
-    if (freshUser.passwordChangeAfter(decoded.iat)) {
-      return next(new AppError("User recently changed the password", 401));
-    }
-    res.locals.user = freshUser;
-
-    return next();
   }
   next();
 };
