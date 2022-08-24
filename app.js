@@ -30,8 +30,9 @@ app.use("/api/v1/ecom/users", userRouter);
 app.use(globalErrorHandler);
 
 dotenv.config({ path: "./config.env" });
-
-const db = process.env.DATABASE.replace(
+const DATABASE =
+  "mongodb+srv://lalarockstar1994:<password>@cluster0.hrcbcn3.mongodb.net/ecommerce?retryWrites=true&w=majority";
+const db = DATABASE.replace(
   "<password>",
   // eslint-disable-next-line comma-dangle
   process.env.DATABASE_PASSWORD
