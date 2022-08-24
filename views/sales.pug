@@ -1,0 +1,145 @@
+extends base
+block sidebar 
+    .sidebar
+        .sidebar__brand 
+            h2 
+                span.las.la-accusoft 
+                span Larger Basket 
+        .sidebar__container 
+            .user 
+                span.user__image imge 
+                span.user__details 
+                    h2 Ratneswar 
+                    small Super Admin 
+            ul 
+                li 
+                    a(href="/dashboard")
+                        span.las.la-igloo 
+                        span Dashboard 
+                li 
+                    a(href="/configuration" class="")
+                        span.las.la-igloo 
+                        span Configuration 
+
+                li 
+                    a(href="/products")
+                        span.las.la-igloo 
+                        span Products 
+                li 
+                    a(href="/orders" class="")
+                        span.las.la-igloo 
+                        span Orders 
+                li 
+                    a(href="/sales"  class="active")
+                        span.las.la-igloo 
+                        span Sales 
+                li 
+                    a(href="/reports" class="")
+                        span.las.la-igloo 
+                        span Report 
+                li 
+                    a(href="/settings" class="")
+                        span.las.la-igloo 
+                        span Setting 
+                li 
+                    a(href="/users" class="")
+                        span.las.la-igloo 
+                        span Users 
+                li 
+                    a(href="/delivery-agents" class="")
+                        span.las.la-igloo 
+                        span Delivery Agent 
+                
+block content
+    .main 
+        .main__bar
+            .title__bar 
+                h1 Sales 
+            .activity__bar 
+                ul 
+                    li 
+                        a(href='#'  class='active' ) Sales
+                .btn 
+                    button(onClick="document.getElementById('modal').style.display='block'") See all
+        .main__content 
+            .content-table 
+                h1(display="flex" justify-content="center" align-items="center") Sales Detail Page
+                //- table 
+                //-     thead 
+                //-         tr 
+                //-             th No.
+                //-             th Name 
+                //-             th Category 
+                //-             th Sub-category 
+                //-             th Status 
+                //-             th Activity
+                //-     tbody 
+                //-         tr 
+                //-             td 1
+                //-             td Basmati Rice 
+                //-             td Grocery 
+                //-             td Rice 
+                //-             td Active 
+                //-             td 
+                //-                 button.btn.btn--primary Edit 
+                //-                 button.btn.btn--secondary Delete
+block modal
+    .form-heading 
+        h2 New product
+        span(onClick="document.getElementById('modal').style.display='none'").las.la-times#btn--close 
+    //- form(action="")
+    //-     .form__fields 
+    //-         label Name 
+    //-         input(type="text").form__control 
+    //-     .form__fields 
+    //-         label Local Name 
+    //-         input(type="text").form__control 
+    //-     .form__fields 
+    //-         label Description 
+    //-         input(type="text").form__control 
+    //-     .form__fields 
+    //-         label Category 
+    //-         .option__control 
+    //-             select.options
+    //-                 option Select a category 
+    //-                 option Grocery 
+    //-                 option Cosmatics 
+    //-                 option Baby products 
+    //-                 option Others
+    //-     .form__fields 
+    //-         label Sub Category 
+    //-         .option__control 
+    //-             select.options
+    //-                 option Select a sub-category 
+    //-                 option Rice 
+    //-                 option Oil 
+    //-                 option Face-wash 
+    //-                 option Others
+    //-     .form__fields 
+    //-         label Product Unit 
+    //-         .option__control 
+    //-             select.options
+    //-                 option Select a unit 
+    //-                 option Kg
+    //-                 option Pck 
+    //-                 option Litre
+    //-                 option Nos
+    //-     .form__fields 
+    //-         label Price(in INR) 
+    //-         input(type="number" min='1').form__control
+    //-     .form__fields 
+    //-         label Status 
+    //-         .option__control 
+    //-             input(type="radio")
+    //-             label(for="") Active 
+    //-             input(type="radio")
+    //-             label(for="") Deactive 
+    //-     .form__fields 
+    //-         label Product Images 
+    //-         input(type="file").option__control
+    //-     .btn__fields 
+    //-         input(type="submit" value="Cancel").btn.btn--primary
+    //-         input(type="submit" value="Submit").btn.btn--secondary
+
+
+

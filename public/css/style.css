@@ -278,7 +278,7 @@ ul{
 /* **************SIDEBAR**************** */
 .sidebar {
     width: var(--sidebar-width);
-    height: 100%;
+    height: calc(100% - var(--header-width));
     position: fixed;
     background-color: var(--color-primary);
     
@@ -339,7 +339,7 @@ ul{
     display: flex;
     flex-direction: column;
     position: sticky;
-    top:-1rem;
+    top:-.5rem;
     background-color: #fff;
     border-bottom: 1px solid gray;
 
@@ -362,7 +362,8 @@ ul{
     margin-top: 2rem;
 }
 .sidebar__container ul{
-    padding-top: var(--padding);
+    padding: var(--padding) 0;
+     
 }
 
 .sidebar__container li {
@@ -422,8 +423,8 @@ ul{
     
    
     width: 100%;
-    /* position: sticky;
-    top:0; */
+    position: sticky;
+    top:0;
     z-index: 100;
     
     
@@ -562,7 +563,7 @@ ul{
     display: grid;
     grid-template-columns: 60% auto;
     grid-gap: 2rem;
-    height: 100%;
+    height: calc(100% - 14rem);
     padding: 0 1.5rem 1.5rem 1.5rem;
 }
 .grid__cards{
@@ -576,13 +577,85 @@ ul{
     background-color: #fff;
     border-radius: 2rem;
     box-shadow: -.5rem .3rem .3rem rgba(128, 128, 128, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation:moveupgrid 2s ease
+   
     
 }
 .grid__box{
     background-color: #fff;
     border-radius: 2rem;
     box-shadow: -.5rem .3rem .3rem rgba(128, 128, 128, 0.2);
+    animation:moverightgrid 2s ease
 }
+.grid__box .image__container{
+    height: 15rem;
+    
+ 
+}
+
+.card__details {
+    /* width: 100%; */
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 2rem;
+    background-color: palevioletred;
+    color: wheat;
+    
+    
+}
+@keyframes moveupgrid {
+    0%{
+        transform: translateY(20rem);
+        opacity:0
+    }
+    90%{
+        transform: translateY(-1rem);
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+}
+@keyframes moverightgrid {
+    0%{
+        transform: translateX(20rem);
+        opacity:0
+    }
+   
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+}
+
+.card__details .card__detail{
+    display: flex;
+    flex-direction: column;
+    /* font-size: 1.5rem; */
+}
+.card__details span{
+    font-size: 3rem;
+}
+.grid__card .card__image{
+    height: 60%;
+    width: 15rem;
+   
+    flex: 1;
+    align-self: center;
+    
+}
+/* .card__detail
+    h2 5400
+    span Customers 
+span.las.la-bars
+.card__image 
+img(src="/img/bar.svg", alt="") */
 /**************************************products***********************/
 .content-table{
   

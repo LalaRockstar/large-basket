@@ -3,6 +3,7 @@ const hideAlert = () => {
   if (el) el.parentElement.removeChild(el);
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export const showAlert = (type, msg) => {
   hideAlert();
   const markup = `<div class="alert alert--${type}">${msg}</div>`;
